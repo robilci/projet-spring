@@ -36,5 +36,10 @@ public class UrlMapping {
         return "login"; 
     }
     
+    @GetMapping("/member/create")
+    public String memberCreateForm(Model model){
+        return "member/create";
+    }
+    
     
 }

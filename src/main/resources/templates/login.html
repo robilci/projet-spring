@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Getting Started: Serving Web Content</title>
+        <title>Login</title>
         <th:block th:include="fragments/bootstrap :: head"></th:block>
         <link href="css/login.css" rel="stylesheet"/>
     </head>
@@ -10,7 +10,7 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <div class="fadeIn first">
-                <img src="images/logo.png" id="icon" alt="User Icon" />
+                <img src="images/logo.png" id="icon"/>
             </div>
 
             <form action="#" th:action="@{/login}" th:object="${login}" method="post">
