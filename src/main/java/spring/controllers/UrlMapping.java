@@ -5,14 +5,15 @@
  */
 package spring.controllers;
 
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import spring.classes.Login;
+import spring.validator.MemberForm;
 
 /**
  *
@@ -22,24 +23,40 @@ import spring.classes.Login;
 public class UrlMapping {
 
     @GetMapping("/login")
-    public String loginForm(Model model){
+    public String loginForm(Model model) {
         model.addAttribute("login", new Login());
         return "login";
     }
-    
+
     @PostMapping("/login")
-    public String loginSubmit(@ModelAttribute Login login, Model model){
+    public String loginSubmit(@ModelAttribute Login login, Model model) {
         // TODO : vérification du login et mot de passe dans la bdd
-        // TODO : Si tout est OK démarage de la session Spring
+        // TODO : Si tout est OK démarage de la session Spring avec toute les données nécéssaires dedans
         // TODO : En fonction du rôle redirection vers une page
         System.out.println(login.getEmail() + " -  " + login.getPassword());
-        return "login"; 
+        return "login";
     }
-    
+
     @GetMapping("/member/create")
-    public String memberCreateForm(Model model){
+    public String memberCreateForm(MemberForm memberForm) {
         return "member/create";
     }
-    
-    
+
+    @PostMapping("/member/create")
+    public String checkPersonInfo(@Valid MemberForm memberForm, BindingResult bindingResult) {
+        
+        for(int i = 0; i < bindingResult.getAllErrors().size(); i++){
+            System.out.print(bindingResult.getAllErrors().get(i).getCode());
+            System.out.print(bindingResult.getAllErrors().get(i).getObjectName());
+            System.out.println(bindingResult.getAllErrors().get(i).getDefaultMessage());
+        }
+        
+        
+        if (bindingResult.hasErrors()) {
+            return "member/create";
+        }
+
+        return "log";
+    }
+
 }
