@@ -45,18 +45,13 @@ public class UrlMapping {
     @PostMapping("/member/create")
     public String checkPersonInfo(@Valid MemberForm memberForm, BindingResult bindingResult) {
         
-        for(int i = 0; i < bindingResult.getAllErrors().size(); i++){
-            System.out.print(bindingResult.getAllErrors().get(i).getCode());
-            System.out.print(bindingResult.getAllErrors().get(i).getObjectName());
-            System.out.println(bindingResult.getAllErrors().get(i).getDefaultMessage());
-        }
-        
-        
         if (bindingResult.hasErrors()) {
             return "member/create";
         }
 
-        return "log";
+        // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
+        return "login";
+        
     }
 
 }
