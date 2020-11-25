@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login</title>
+        <th:block th:include="fragments/bootstrap :: head"></th:block>
+        <link href="css/login.css" rel="stylesheet"/>
+    </head>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="fadeIn first">
+                <img src="images/logo.png" id="icon"/>
+            </div>
+
+            <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+                <input th:field="*{email}" type="text" id="login" class="fadeIn second" name="login" placeholder="email">
+                <input th:field="*{password}" type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

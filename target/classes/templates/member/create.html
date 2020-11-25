@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Création d'un nouveau membre</title>
+    <th:block th:include="fragments/bootstrap :: head"></th:block>
+</head>
+<body>
+    <form action="#" th:action="@{/member/create}" th:object="${memberForm}" method="post">
+        <table>
+            <tr>
+                <td>Prénom :</td>
+                <td><input type="text" th:field="*{firstname}" /></td>
+                <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Firstname Error</td>
+            </tr>
+            <tr>
+                <td>Nom :</td>
+                <td><input type="text" th:field="*{lastname}" /></td>
+                <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Lastname Error</td>
+            </tr>
+            <tr>
+
+            <tr>
+                <td>Email :</td>
+                <td><input type="text" th:field="*{email}" /></td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
