@@ -15,31 +15,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import spring.core.entity.Member;
 import spring.core.service.MemberService;
-import spring.validator.MemberForm;
 
 /**
  *
  * @author robin
  */
 @Controller
+@RequestMapping("member")
 public class MemberController {
     
     @Autowired
     private MemberService service;
     
-    @GetMapping("member/create")
-    public String createForm(MemberForm form){
+    @GetMapping("/create")
+    public String createForm(Model model){
+        
+        model.addAttribute("member", new Member());
         return "member/create";
     }
     
-    @PostMapping("member/create")
-    public String checkPersonInfo(@Valid MemberForm memberForm, BindingResult bindingResult) {
+    @PostMapping("/create")
+    public String createValid(@Valid Member member, BindingResult bindingResult) {
+        
+        System.out.println("nb error = " + bindingResult.getAllErrors().size());
         
         if (bindingResult.hasErrors()) {
             return "member/create";
         }
         
+        service.save(member);
         // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
-        return "login";
+        return "home";
     }
 }
