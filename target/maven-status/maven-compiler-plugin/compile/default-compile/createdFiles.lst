@@ -1,7 +1,10 @@
 spring\controllers\UrlMapping.class
-spring\core\Login.class
+spring\core\service\MemberService.class
 spring\core\entity\Member.class
 spring\core\repository\MemberRepository.class
+spring\classes\Login.class
 spring\config\WebMvcConfig.class
 spring\Application.class
+spring\controllers\MemberController.class
+spring\core\service\impl\MemberServiceImpl.class
 spring\validator\MemberForm.class

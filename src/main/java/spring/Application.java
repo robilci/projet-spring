@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  *
  * @author robin
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "spring")
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

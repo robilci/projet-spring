@@ -44,8 +44,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findByName(String name) {
-        return repo.findByName(name);
+    public Member findByFirstname(String firstname) {
+        return repo.findByFirstname(firstname);
     }
 
     @Override

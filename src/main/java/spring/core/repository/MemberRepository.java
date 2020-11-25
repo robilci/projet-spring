@@ -14,6 +14,6 @@ import spring.core.entity.Member;
  */
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Member findByName(String name);
+    Member findByFirstname(String firstname);
     
 }

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import spring.classes.Login;
 import spring.validator.MemberForm;
 
@@ -35,23 +36,6 @@ public class UrlMapping {
         // TODO : En fonction du rôle redirection vers une page
         System.out.println(login.getEmail() + " -  " + login.getPassword());
         return "login";
-    }
-
-    @GetMapping("/member/create")
-    public String memberCreateForm(MemberForm memberForm) {
-        return "member/create";
-    }
-
-    @PostMapping("/member/create")
-    public String checkPersonInfo(@Valid MemberForm memberForm, BindingResult bindingResult) {
-        
-        if (bindingResult.hasErrors()) {
-            return "member/create";
-        }
-
-        // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
-        return "login";
-        
     }
 
 }

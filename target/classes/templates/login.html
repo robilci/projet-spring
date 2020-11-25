@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Login</title>
-        <th:block th:include="fragments/bootstrap :: head"></th:block>
-        <link href="css/login.css" rel="stylesheet"/>
-    </head>
+    <th:block th:include="fragments/example :: head"></th:block>
+    <link href="css/login.css" rel="stylesheet"/>
+    <link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{../jquery/jquery.min.js}"></script>  
+    <script th:src="@{../popper/popper.min.js}"></script>  
+    <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>  
+</head>
 
 <body>
     <div class="wrapper fadeInDown">
