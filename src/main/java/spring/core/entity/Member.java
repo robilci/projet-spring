@@ -5,45 +5,50 @@
  */
 package spring.core.entity;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.apache.catalina.util.ToStringUtil;
 
 /**
  *
  * @author robin
  */
-
 @Entity
-public class Member {
+public class Member implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @NotNull(message="")
+
+    @NotNull(message = "")
     @Size(min = 2, max = 30, message = "Le prénom doit contenir entre 2 et 30 caractères")
     private String firstname;
-    
+
     @NotNull
     @Size(min = 2, max = 30, message = "Le nom doit contenir entre 2 et 30 caractères")
     private String lastname;
-    
+
     @NotNull
-    @Pattern(regexp="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Email invalide")
+    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Email invalide")
     private String email;
-    
-    @Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit compoter au moins une minuscule, une majuscule, un chiffre, un caractère spécial et doit avoir une longueur de 8 minimum")
+
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit compoter au moins une minuscule, une majuscule, un chiffre, un caractère spécial et doit avoir une longueur de 8 minimum")
     private String password;
     
-    public Member(){}
-    
-    public Member(String firstname, String lastname, String email, String password){
+    @ManyToOne
+    private Team team;
+
+    public Member() {
+    }
+
+    public Member(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -89,9 +94,9 @@ public class Member {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Member : " + firstname + " - " + lastname + " : " + email;
     }
 }

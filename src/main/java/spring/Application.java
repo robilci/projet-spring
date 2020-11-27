@@ -5,14 +5,15 @@
  */
 package spring;
 
-import java.util.Optional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import spring.core.entity.Member;
+import spring.core.entity.Team;
 import spring.core.repository.MemberRepository;
+import spring.core.repository.TeamRepository;
 
 /**
  *
@@ -26,25 +27,31 @@ public class Application extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demo(MemberRepository repository) {
+    public CommandLineRunner demo(MemberRepository memberRepo, TeamRepository teamRepo) {
         return (args) -> {
-            // save a few customers
-            repository.save(new Member("Jack", "Bauer", "jack.bauer@gmail.com", "abcABC#@123"));
-            repository.save(new Member("John", "Wick", "john.wick@gmail.com", "abcABCddaa#@123"));
+            // save a few members
+            memberRepo.save(new Member("Jack", "Bauer", "jack.bauer@gmail.com", "abcABC#@123"));
+            memberRepo.save(new Member("John", "Wick", "john.wick@gmail.com", "abcABCddaa#@123"));
+            teamRepo.save(new Team("informaticien"));
 
-            // fetch all customers
+            // fetch all members
             System.out.println("Member found with findAll():");
             System.out.println("-------------------------------");
-            for (Member member : repository.findAll()) {
+            for (Member member : memberRepo.findAll()) {
                 System.out.println(member.toString());
             }
 
-            // fetch an individual customer by ID
-            Member member = repository.findById(1L);
+            // fetch an individual member by ID
+            Member member = memberRepo.findById(1L);
             System.out.println("member found with findById(1L):");
+            System.out.println(member.toString());
+            
+            for (Team team : teamRepo.findAll()) {
+                System.out.println(team.toString());
+            }
 
             System.out.println("--------------------------------------------");
-            repository.findByFirstname("Jack").forEach(bauer -> {
+            memberRepo.findByFirstname("Jack").forEach(bauer -> {
                 System.out.println(bauer.toString());
             });
         };
