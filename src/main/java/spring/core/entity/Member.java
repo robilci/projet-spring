@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import org.apache.catalina.util.ToStringUtil;
 
 /**
  *
@@ -41,6 +42,13 @@ public class Member {
     private String password;
     
     public Member(){}
+    
+    public Member(String firstname, String lastname, String email, String password){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -80,5 +88,10 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
-    }  
+    }
+    
+    @Override
+    public String toString(){
+        return "Member : " + firstname + " - " + lastname + " : " + email;
+    }
 }

@@ -44,13 +44,13 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findByFirstname(String firstname) {
-        return repo.findByFirstname(firstname);
+    public Member getOne(Long id) {
+        return repo.getOne(id);
     }
 
     @Override
-    public Member getOne(Long id) {
-        return repo.getOne(id);
+    public List<Member> findByFirstname(String firstname) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

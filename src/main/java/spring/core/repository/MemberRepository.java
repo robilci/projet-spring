@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package spring.core.repository;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import spring.core.entity.Member;
 
@@ -14,6 +15,7 @@ import spring.core.entity.Member;
  */
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Member findByFirstname(String firstname);
+    List<Member> findByFirstname(String firstname);
+    Member findById(long id);
     
 }

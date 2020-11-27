@@ -18,6 +18,6 @@ public interface MemberService {
     void delete(Long id);
     List<Member> findAll();
     Optional<Member> findById(Long id);
-    Member findByFirstname(String firstname);
+    List<Member> findByFirstname(String firstname);
     Member getOne(Long id);
 }
