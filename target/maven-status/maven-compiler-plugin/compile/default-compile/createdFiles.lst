@@ -1,10 +1,13 @@
 spring\controllers\UrlMapping.class
 spring\core\service\MemberService.class
 spring\core\entity\Member.class
+spring\core\entity\Team.class
 spring\core\repository\MemberRepository.class
+spring\core\repository\TeamRepository.class
 spring\classes\Login.class
-spring\config\WebMvcConfig.class
 spring\Application.class
 spring\controllers\MemberController.class
+spring\core\service\TeamService.class
 spring\core\service\impl\MemberServiceImpl.class
-spring\validator\MemberForm.class
+.netbeans_automatic_build
+spring\core\service\impl\TeamServiceImpl.class

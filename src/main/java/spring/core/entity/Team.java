@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,6 +22,8 @@ import javax.validation.constraints.Size;
  * @author robin
  */
 @Entity
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})})
 public class Team implements Serializable {
 
     @Id
@@ -31,7 +35,7 @@ public class Team implements Serializable {
     String name;
 
     @OneToMany(mappedBy = "team")
-    private List<Member> members;
+    private List<User> members;
 
     public Team() {
     }
@@ -48,11 +52,11 @@ public class Team implements Serializable {
         this.id = id;
     }
 
-    public List<Member> getMembers() {
+    public List<User> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Member> members) {
+    public void setMembers(List<User> members) {
         this.members = members;
     }
 

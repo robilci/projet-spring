@@ -13,9 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import spring.core.entity.Member;
-import spring.core.service.MemberService;
+import spring.core.entity.User;
 import spring.core.service.TeamService;
+import spring.core.service.UserService;
 
 /**
  *
@@ -26,7 +26,7 @@ import spring.core.service.TeamService;
 public class MemberController {
     
     @Autowired
-    private MemberService service;
+    private UserService service;
     
     @Autowired
     private TeamService teamService;
@@ -34,13 +34,13 @@ public class MemberController {
     @GetMapping("/create")
     public String createForm(Model model){
         
-        model.addAttribute("member", new Member());
+        model.addAttribute("member", new User());
         model.addAttribute("teams", teamService.findAll());
         return "member/create";
     }
     
     @PostMapping("/create")
-    public String createValid(@Valid Member member, BindingResult bindingResult) {
+    public String createValid(@Valid User member, BindingResult bindingResult) {
         
         member.setPassword("abcABC@11215");
         System.out.println("nb error = " + bindingResult.getAllErrors().size());
