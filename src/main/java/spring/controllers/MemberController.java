@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import spring.core.entity.Member;
 import spring.core.service.MemberService;
+import spring.core.service.TeamService;
 
 /**
  *
@@ -27,16 +28,21 @@ public class MemberController {
     @Autowired
     private MemberService service;
     
+    @Autowired
+    private TeamService teamService;
+    
     @GetMapping("/create")
     public String createForm(Model model){
         
         model.addAttribute("member", new Member());
+        model.addAttribute("teams", teamService.findAll());
         return "member/create";
     }
     
     @PostMapping("/create")
     public String createValid(@Valid Member member, BindingResult bindingResult) {
         
+        member.setPassword("abcABC@11215");
         System.out.println("nb error = " + bindingResult.getAllErrors().size());
         
         if (bindingResult.hasErrors()) {

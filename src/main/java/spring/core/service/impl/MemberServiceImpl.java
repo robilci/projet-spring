@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<Member> findByFirstname(String firstname) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return repo.findByFirstname(firstname);
     }
     
 }

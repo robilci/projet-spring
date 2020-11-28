@@ -20,24 +20,40 @@ import javax.validation.constraints.Size;
  * @author robin
  */
 @Entity
-public class Team implements Serializable{
-    
+public class Team implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    
+
     @NotNull
     @Size(min = 2, max = 30, message = "Le nom du groupe doit contenir entre 2 et 30 caractères")
     String name;
-    
+
     @OneToMany(mappedBy = "team")
     private List<Member> members;
 
     public Team() {
     }
-    
-    public Team(String name){
+
+    public Team(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
     }
 
     public String getName() {
@@ -47,10 +63,10 @@ public class Team implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Team : " + name;
     }
-    
+
 }

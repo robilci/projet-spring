@@ -13,29 +13,30 @@ and open the template in the editor.
         <script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>  
     </head>
     <body>
-        <form action="#" th:action="@{/member/create}" th:object="${member}" method="post">
-            <table>
-                <tr>
-                    <td>Prénom :</td>
-                    <td><input type="text" th:field="*{firstname}" /></td>
-                    <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Firstname Error</td>
-                </tr>
-                <tr>
-                    <td>Nom :</td>
-                    <td><input type="text" th:field="*{lastname}" /></td>
-                    <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Lastname Error</td>
-                </tr>
-                <tr>
-
-                <tr>
-                    <td>Email :</td>
-                    <td><input type="text" th:field="*{email}" /></td>
-                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
-                </tr>
-                <tr>
-                    <td><button type="submit">Submit</button></td>
-                </tr>
-            </table>
+        <form action="#" th:object="${member}" method="post" role="form">
+            
+            <label th:text="firstname" for="name"/>
+            <input id="name" type="text" th:field="*{firstname}"/><br>
+            
+            <label th:text="lastname" for="lastname"/>
+            <input id="lastname" type="text" th:field="*{lastname}"/><br>
+            
+            <label th:text="email" for="email"/>
+            <input id="email" type="text" th:field="*{email}"/><br>
+            
+            <label th:text="team" for="team"/>
+            <!-- Un selecteur est ajouté -->
+            <!-- Il affecte le champ team de membre -->
+            <select th:field="*{team}" id="team">
+                <!-- Un choix "vide" et une liste de catégories -->
+                <option th:value="null" th:text="Vide"/>
+                <option th:each="team : ${teams}"
+                        th:value="${team.id}"
+                        th:text="${team.name}"/>
+                <!-- Notez le .id -->
+            </select>
+            <br>
+            <button th:text="Valider" type="submit"/>
         </form>
     </body>
 </html>

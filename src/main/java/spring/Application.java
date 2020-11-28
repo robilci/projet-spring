@@ -30,9 +30,11 @@ public class Application extends SpringBootServletInitializer {
     public CommandLineRunner demo(MemberRepository memberRepo, TeamRepository teamRepo) {
         return (args) -> {
             // save a few members
-            memberRepo.save(new Member("Jack", "Bauer", "jack.bauer@gmail.com", "abcABC#@123"));
-            memberRepo.save(new Member("John", "Wick", "john.wick@gmail.com", "abcABCddaa#@123"));
-            teamRepo.save(new Team("informaticien"));
+            Team t = new Team("informaticien");
+            teamRepo.save(t);
+            memberRepo.save(new Member("Jack", "Bauer", "jack.bauer@gmail.com", "abcABC#@123", t));
+            memberRepo.save(new Member("John", "Wick", "john.wick@gmail.com", "abcABCddaa#@123", t));
+            
 
             // fetch all members
             System.out.println("Member found with findAll():");
@@ -40,11 +42,6 @@ public class Application extends SpringBootServletInitializer {
             for (Member member : memberRepo.findAll()) {
                 System.out.println(member.toString());
             }
-
-            // fetch an individual member by ID
-            Member member = memberRepo.findById(1L);
-            System.out.println("member found with findById(1L):");
-            System.out.println(member.toString());
             
             for (Team team : teamRepo.findAll()) {
                 System.out.println(team.toString());

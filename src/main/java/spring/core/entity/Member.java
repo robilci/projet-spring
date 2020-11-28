@@ -48,11 +48,12 @@ public class Member implements Serializable {
     public Member() {
     }
 
-    public Member(String firstname, String lastname, String email, String password) {
+    public Member(String firstname, String lastname, String email, String password, Team team) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+        this.team = team;
     }
 
     public Long getId() {
@@ -95,8 +96,16 @@ public class Member implements Serializable {
         this.password = password;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @Override
     public String toString() {
-        return "Member : " + firstname + " - " + lastname + " : " + email;
+        return "Member : " + firstname + " - " + lastname + " : " + email + " team : " + getTeam().getName();
     }
 }
