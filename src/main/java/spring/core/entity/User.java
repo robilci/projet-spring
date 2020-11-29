@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -48,16 +49,20 @@ public class User implements Serializable {
     
     @ManyToOne
     private Team team;
+    
+    @ManyToOne
+    private Role role;
 
     public User() {
     }
 
-    public User(String firstname, String lastname, String email, String password, Team team) {
+    public User(String firstname, String lastname, String email, String password, Team team, Role role) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.team = team;
+        this.role = role;
     }
 
     public Long getId() {
@@ -108,8 +113,16 @@ public class User implements Serializable {
         this.team = team;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "Member : " + firstname + " - " + lastname + " : " + email + " team : " + getTeam().getName();
+        return "Member : " + firstname + " - " + lastname + " : " + email + " team : " + team.getName() + " - role : " + role.getName();
     }
 }

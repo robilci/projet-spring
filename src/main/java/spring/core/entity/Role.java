@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -24,23 +23,22 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(uniqueConstraints = {
     @UniqueConstraint(columnNames = {"name"})})
-public class Team implements Serializable {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @NotNull
-    @Size(min = 2, max = 30, message = "Le nom du groupe doit contenir entre 2 et 30 caractères")
-    String name;
+    private String name;
 
-    @OneToMany(mappedBy = "team")
-    private List<User> members;
+    @OneToMany(mappedBy = "role")
+    private List<User> users;
 
-    public Team() {
+    public Role() {
     }
 
-    public Team(String name) {
+    public Role(String name) {
         this.name = name;
     }
 
@@ -52,14 +50,6 @@ public class Team implements Serializable {
         this.id = id;
     }
 
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
-
     public String getName() {
         return name;
     }
@@ -68,8 +58,12 @@ public class Team implements Serializable {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Team : " + name;
+    public List<User> getUsers() {
+        return users;
     }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
 }
