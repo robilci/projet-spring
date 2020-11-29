@@ -31,31 +31,25 @@ public class Application extends SpringBootServletInitializer {
     @Bean
     public CommandLineRunner demo(UserRepository userRepo, TeamRepository teamRepo, RoleRepository roleRepo) {
         return (args) -> {
-            
+
             // save a few user with team and role
-            Team t = new Team("informaticien");
+            /*Team t = new Team("informaticien");
             teamRepo.save(t);
             
             Role r = new Role("Admin");
             roleRepo.save(r);
 
-            userRepo.save(new User("jack", "bauer", "jack.bauer@gmail.com", "abcABC@123", t, r));
-
+            userRepo.save(new User("jack", "bauer", "jack.bauer@gmail.com", "abcABC@123", t, r));*/
             // fetch all userss
-            System.out.println("User found with findAll():");
+            System.out.println("User found with findByPasswordAndEmail():");
             System.out.println("-------------------------------");
-            for (User user : userRepo.findAll()) {
+
+            User user = userRepo.findByPasswordAndEmail("abcdABC@123", "jack.bauer@gmail.com");
+            if (user == null) {
+                System.out.println("Utilisateur introuvable");
+            } else {
                 System.out.println(user.toString());
             }
-            
-            for (Team team : teamRepo.findAll()) {
-                System.out.println(team.toString());
-            }
-
-            System.out.println("--------------------------------------------");
-            userRepo.findByFirstname("Jack").forEach(bauer -> {
-                System.out.println(bauer.toString());
-            });
         };
     }
 

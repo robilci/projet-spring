@@ -52,5 +52,10 @@ public class UserServiceImpl implements UserService {
     public List<User> findByFirstname(String firstname) {
         return repo.findByFirstname(firstname);
     }
+
+    @Override
+    public User findByPasswordAndEmail(String password, String email) {
+        return repo.findByPasswordAndEmail(password, email);
+    }
     
 }
