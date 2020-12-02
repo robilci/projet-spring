@@ -5,13 +5,17 @@
  */
 package spring.classes;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  *
  * @author robin
  */
 public class Login {
-    
+
     private String email;
+    
     private String password;
 
     public Login(String email, String password) {

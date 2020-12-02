@@ -44,7 +44,7 @@ public class Application extends SpringBootServletInitializer {
             System.out.println("User found with findByPasswordAndEmail():");
             System.out.println("-------------------------------");
 
-            User user = userRepo.findByPasswordAndEmail("abcdABC@123", "jack.bauer@gmail.com");
+            User user = userRepo.findByPasswordAndEmail("abcABC@123", "jack.bauer@gmail.com");
             if (user == null) {
                 System.out.println("Utilisateur introuvable");
             } else {
