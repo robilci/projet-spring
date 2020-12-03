@@ -34,7 +34,7 @@ public class AuthenticationController {
     public String loginForm(Model model, HttpSession session) {
         
         model.addAttribute("login", new Login());
-        return "login";
+        return "demand/model/create";
     }
     
     @GetMapping("/logout")
