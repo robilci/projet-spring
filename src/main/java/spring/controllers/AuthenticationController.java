@@ -26,17 +26,27 @@ import spring.core.service.UserService;
  */
 @Controller
 public class AuthenticationController {
-    
+
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public String loginForm(Model model, HttpSession session) {
-        
-        model.addAttribute("login", new Login());
+    @GetMapping("/dev")
+    public String dev(Model model, HttpSession session) {
+
         return "demand/model/create";
     }
-    
+
+    @GetMapping("/login")
+    public String loginForm(Model model, HttpSession session) {
+        if (session != null) {
+            if (session.getAttribute("role") != null) {
+                return "demand/model/list";
+            }
+        }
+        model.addAttribute("login", new Login());
+        return "login";
+    }
+
     @GetMapping("/logout")
     public String logout(Model model, HttpSession session) {
         session.invalidate();
@@ -47,10 +57,10 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public String loginSubmit(@ModelAttribute Login login, Model model, HttpSession session) {
-        
+
         User user = userService.findByPasswordAndEmail(login.getPassword(), login.getEmail());
-        
-        if(user == null){
+
+        if (user == null) {
             model.addAttribute("error", "Email ou mot de passe incorrect");
             session.invalidate();
             return "login";
@@ -58,8 +68,8 @@ public class AuthenticationController {
             session.setAttribute("firstname", user.getFirstname());
             session.setAttribute("lastname", user.getLastname());
             session.setAttribute("role", user.getRole().getName());
-            return "home";
-        }  
+            return "demand/model/list";
+        }
     }
 
 }
