@@ -7,7 +7,10 @@ package spring.core.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -23,6 +26,7 @@ import javax.validation.constraints.Size;
 public class Model implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     @NotNull
@@ -35,15 +39,19 @@ public class Model implements Serializable {
     @NotNull
     private int type;
     
+    @ManyToOne
+    private Domain domain;
+    
     @NotNull
     @Size(min = 2, max = 46)
     private String localisation;
 
-    public Model(String title, int priority, int type, String localisation) {
+    public Model(String title, int priority, int type, String localisation, Domain domain) {
         this.title = title;
         this.priority = priority;
         this.type = type;
         this.localisation = localisation;
+        this.domain = domain;
     }
   
     public Model(){}
@@ -87,5 +95,13 @@ public class Model implements Serializable {
     public void setLocalisation(String localisation) {
         this.localisation = localisation;
     }
-      
+
+    public Domain getDomain() {
+        return domain;
+    }
+
+    public void setDomain(Domain domain) {
+        this.domain = domain;
+    }
+        
 }
