@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Model implements Serializable {
     private Long id;
     
     @NotNull
+    @Size(min = 2, max = 28)
     private String title;
     
     @NotNull
@@ -34,6 +36,7 @@ public class Model implements Serializable {
     private int type;
     
     @NotNull
+    @Size(min = 2, max = 46)
     private String localisation;
 
     public Model(String title, int priority, int type, String localisation) {

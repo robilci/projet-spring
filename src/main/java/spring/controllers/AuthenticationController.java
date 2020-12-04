@@ -33,7 +33,7 @@ public class AuthenticationController {
     @GetMapping("/dev")
     public String dev(Model model, HttpSession session) {
 
-        return "demand/model/create";
+        return "demand/model/list";
     }
 
     @GetMapping("/login")
