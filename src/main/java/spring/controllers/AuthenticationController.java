@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import spring.classes.Login;
 import spring.core.entity.User;
 import spring.core.repository.UserRepository;
+import spring.core.service.DomainService;
 import spring.core.service.UserService;
 
 /**
@@ -29,10 +30,12 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private DomainService domainService;
 
     @GetMapping("/dev")
     public String dev(Model model, HttpSession session) {
-
         return "demand/model/create";
     }
 

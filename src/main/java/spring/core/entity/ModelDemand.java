@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(uniqueConstraints = {
     @UniqueConstraint(columnNames = {"title"})})
-public class Model implements Serializable {
+public class ModelDemand implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,17 +44,17 @@ public class Model implements Serializable {
     
     @NotNull
     @Size(min = 2, max = 46)
-    private String localisation;
+    private String location;
 
-    public Model(String title, int priority, int type, String localisation, Domain domain) {
+    public ModelDemand(String title, int priority, int type, String localisation, Domain domain) {
         this.title = title;
         this.priority = priority;
         this.type = type;
-        this.localisation = localisation;
+        this.location = localisation;
         this.domain = domain;
     }
   
-    public Model(){}
+    public ModelDemand(){}
     
     public Long getId() {
         return id;
@@ -88,12 +88,12 @@ public class Model implements Serializable {
         this.type = type;
     }
 
-    public String getLocalisation() {
-        return localisation;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Domain getDomain() {

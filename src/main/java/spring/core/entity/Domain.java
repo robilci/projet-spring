@@ -33,7 +33,7 @@ public class Domain implements Serializable {
     private String name;
     
     @OneToMany(mappedBy = "domain")
-    private List<Model> models;
+    private List<ModelDemand> models;
      
     public Domain(){}
     
@@ -57,11 +57,11 @@ public class Domain implements Serializable {
         this.name = name;
     }
 
-    public List<Model> getModels() {
+    public List<ModelDemand> getModels() {
         return models;
     }
 
-    public void setModels(List<Model> models) {
+    public void setModels(List<ModelDemand> models) {
         this.models = models;
     }
    
