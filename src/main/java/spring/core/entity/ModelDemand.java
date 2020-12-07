@@ -46,11 +46,11 @@ public class ModelDemand implements Serializable {
     @Size(min = 2, max = 46)
     private String location;
 
-    public ModelDemand(String title, int priority, int type, String localisation, Domain domain) {
+    public ModelDemand(String title, int priority, int type, String location, Domain domain) {
         this.title = title;
         this.priority = priority;
         this.type = type;
-        this.location = localisation;
+        this.location = location;
         this.domain = domain;
     }
   

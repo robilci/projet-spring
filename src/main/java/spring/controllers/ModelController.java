@@ -40,11 +40,21 @@ public class ModelController {
     }
     
     @PostMapping("/create")
-    public String createForm(@Valid ModelDemand modelDemand, BindingResult bindingResult){
+    public String createForm(@Valid ModelDemand modelDemand, BindingResult bindingResult, Model model){
         
         if(!bindingResult.hasErrors()){
             modelService.save(modelDemand);
+            return this.list(model);
         }
-        return "demand/model/create";
+        
+        return this.createForm(model);
     }
+    
+    @GetMapping("/list")
+    public String list(Model model){
+        
+        model.addAttribute("models", modelService.findAll());
+        
+        return "demand/model/list";
+    }      
 }

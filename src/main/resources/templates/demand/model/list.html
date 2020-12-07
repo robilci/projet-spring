@@ -9,11 +9,10 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/login.css" rel="stylesheet"/>
-        <link th:href="@{./bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <script th:src="@{./jquery/jquery.min.js}"></script>  
-        <script th:src="@{./popper/popper.min.js}"></script>  
-        <script th:src="@{./bootstrap/js/bootstrap.min.js}"></script>  
+        <link th:href="@{../../../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{../../../jquery/jquery.min.js}"></script>  
+        <script th:src="@{../../../popper/popper.min.js}"></script>  
+        <script th:src="@{../../../bootstrap/js/bootstrap.min.js}"></script>  
     </head>
     <body>
         <div class="card text-center">
@@ -43,83 +42,23 @@ and open the template in the editor.
                 <div class="col-sm-4">
                     <div class=" card border border-secondary rounded m-1">
                         <h5 class="card-header">Type du modèle</h5>
-                        <img src="images/new.png" class="mx-auto d-block m-1" height="100" width="100" alt="new">
+                        <img src="../../../images/new.png" class="mx-auto d-block m-1" height="100" width="100" alt="new">
                         <div class="card-body">
                             <h5 class="card-title">Titre</h5>
                             <h6> Niveau d'urgence : ?</h6> 
                             <p><small class="card-title">Localisation</small></p>
-                            <a href="#" class="btn btn-primary">Nouveau</a>
+                            <a href="create" class="btn btn-primary">Nouveau</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-warning rounded m-1">
-                        <h5 class="card-header">Incident</h5>
-                        <img src="images/incident.png" class="mx-auto d-block m-1" height="100" width="100" alt="incident">
+                <div th:each="model : ${models}" class="col-sm-4">
+                    <div th:class="${model.type == 1} ? 'card border border-primary rounded m-1' : 'card border border-warning rounded m-1'">
+                        <h5 th:text="${model.type == 1} ? 'service' : 'incident'" class="card-header"></h5>
+                        <img th:src="${model.type == 1} ? '../../../images/service.png' : '../../../images/incident.png'" class="mx-auto d-block m-1" height="100" width="100" alt="incident">
                         <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-warning rounded m-1">
-                        <h5 class="card-header">Incident</h5>
-                        <img src="images/incident.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-info rounded m-1">
-                        <h5 class="card-header">Service</h5>
-                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-info rounded m-1">
-                        <h5 class="card-header">Service</h5>
-                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-info rounded m-1">
-                        <h5 class="card-header">Service</h5>
-                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class=" card border border-info rounded m-1">
-                        <h5 class="card-header">Service</h5>
-                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Authentification compte</h5>
-                            <h6> Niveau d'urgence : 3</h6> 
-                            <p><small class="card-title">126 rue du general john Montreuille 68100</small></p>                     
+                            <h5 th:text="${model.title}" class="card-title"></h5>
+                            <h6 th:text="'Niveau d\'urgence : ' + ${model.priority}">test</h6> 
+                            <p><small th:text="${model.location}" class="card-title"></small></p>                     
                             <a href="#" class="btn btn-primary">Modifier</a>
                         </div>
                     </div>

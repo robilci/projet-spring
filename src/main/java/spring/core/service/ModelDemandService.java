@@ -5,6 +5,7 @@
  */
 package spring.core.service;
 
+import java.util.List;
 import spring.core.entity.ModelDemand;
 
 /**
@@ -14,5 +15,5 @@ import spring.core.entity.ModelDemand;
 public interface ModelDemandService {
     
     public ModelDemand save(ModelDemand entity);
-    
+    public List<ModelDemand> findAll();
 }

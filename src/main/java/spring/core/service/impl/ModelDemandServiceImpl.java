@@ -5,6 +5,7 @@
  */
 package spring.core.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.core.entity.ModelDemand;
@@ -25,6 +26,11 @@ public class ModelDemandServiceImpl implements ModelDemandService {
     @Override
     public ModelDemand save(ModelDemand entity) {
         return repo.save(entity);
+    }
+
+    @Override
+    public List<ModelDemand> findAll() {
+        return repo.findAll();
     }
 
 }
