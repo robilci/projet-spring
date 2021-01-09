@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spring.classes.entity;
+package spring.core.service;
+
+import java.util.List;
+import spring.core.entity.ModelDemand;
 
 /**
  *
  * @author robin
  */
-
-public class Member {
+public interface ModelDemandService {
     
-    
-    
+    public ModelDemand save(ModelDemand entity);
+    public List<ModelDemand> findAll();
 }
