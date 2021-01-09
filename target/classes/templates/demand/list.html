@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html style="background-color: white">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/login.css" rel="stylesheet"/>
+        <link th:href="@{./bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{./jquery/jquery.min.js}"></script>  
+        <script th:src="@{./popper/popper.min.js}"></script>  
+        <script th:src="@{./bootstrap/js/bootstrap.min.js}"></script>  
+    </head>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Modèle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home">Domaine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Utilisateur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Groupe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rôle</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class=" card border border-secondary rounded m-1">
+                        <h5 class="card-header">Type de la demande</h5>
+                        <img src="images/new.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Titre</h5>
+                            <p class="card-text">Description à remplir</p>
+                            <h6> Niveau d'urgence : </h6>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div><br>
+                            <a href="#" class="btn btn-primary">Créez une nouvelle demande</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class=" card border border-warning rounded m-1">
+                        <h5 class="card-header">Incident</h5>
+                        <img src="images/incident.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">WIFI disfonctionnel</h5>
+                            <p class="card-text">Le WIFI ne fonctionne plus depuis ...</p>
+                            <h6> Niveau d'urgence : </h6>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div><br>
+                            <a href="#" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4">
+                    <div class=" card border border-warning rounded m-1">
+                        <h5 class="card-header">Incident</h5>
+                        <img src="images/incident.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Données perdues</h5>
+                            <p class="card-text">Besoin de récupérer la sauvegarde des ...</p>
+                            <h6> Niveau d'urgence : </h6>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div><br>
+                            <a href="#" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class=" card border border-info rounded m-1">
+                        <h5 class="card-header">Service</h5>
+                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Papiers imprimante</h5>
+                            <p class="card-text">Il va bientôt manquer de papier dans l'imprimante.</p>
+                            <h6> Niveau d'urgence : </h6>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div><br>
+                            <a href="#" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class=" card border border-info rounded m-1">
+                        <h5 class="card-header">Service</h5>
+                        <img src="images/service.png" class="mx-auto d-block m-1" height="100" width="100" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Cartouches imprimante</h5>
+                            <p class="card-text">Il va bientôt manquer de cartouche dans l'imprimante.</p>
+                            <h6> Niveau d'urgence : </h6>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div><br>
+                            <a href="#" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
