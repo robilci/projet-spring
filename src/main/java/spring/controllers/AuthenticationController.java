@@ -56,7 +56,7 @@ public class AuthenticationController {
     @GetMapping("/logout")
     public String logout(Model model, HttpSession session) {
         session.invalidate();
-        model.addAttribute("logout", "Vous avez été déconnecté avec succès");
+        model.addAttribute("logout", "Vous avez Ã©tÃ© dÃ©connectÃ© avec succÃ¨s");
         model.addAttribute("login", new Login());
         return "login";
     }
