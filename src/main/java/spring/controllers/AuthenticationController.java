@@ -27,7 +27,7 @@ import spring.core.service.UserService;
  */
 @Controller
 public class AuthenticationController {
-    
+
     @Autowired
     private ModelController modelController;
 
@@ -56,7 +56,7 @@ public class AuthenticationController {
     @GetMapping("/logout")
     public String logout(Model model, HttpSession session) {
         session.invalidate();
-        model.addAttribute("logout", "Vous avez Ã©tÃ© dÃ©connectÃ© avec succÃ¨s");
+        model.addAttribute("logout", "Vous avez été déconnecté avec succès");
         model.addAttribute("login", new Login());
         return "login";
     }
@@ -74,6 +74,7 @@ public class AuthenticationController {
             session.setAttribute("firstname", user.getFirstname());
             session.setAttribute("lastname", user.getLastname());
             session.setAttribute("role", user.getRole().getName());
+
             return this.modelController.list(model);
         }
     }

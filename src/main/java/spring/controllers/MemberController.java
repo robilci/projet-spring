@@ -51,7 +51,8 @@ public class MemberController {
         
         service.save(member);
         System.out.println(service.findByFirstname("Robin").toString());
-        // TODO : si il ny a pas d'erreur, on gÃ©nÃ¨re un MDP et on crÃ©e le nouvel utilisateur puis on redirige avec un message de confirmation
+        // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
         return "home";
+
     }
 }

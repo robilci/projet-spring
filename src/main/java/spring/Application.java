@@ -35,16 +35,24 @@ public class Application extends SpringBootServletInitializer {
         return (args) -> {
 
             // save a few user with team and role
-            /*Team t = new Team("informaticien");
+            /*
+            Team t = new Team("informaticien");
+            teamRepo.save(t);
+
+            Team t = new Team("RH");
             teamRepo.save(t);
             
             Role r = new Role("Admin");
             roleRepo.save(r);
 
-            userRepo.save(new User("jack", "bauer", "jack.bauer@gmail.com", "abcABC@123", t, r));*/
-            
-            /*Domain domain1 = new Domain("Informatique");
-            Domain domain2 = new Domain("RÃ©seaux et internet");
+            Role r2 = new Role("Intervenant");
+            roleRepo.save(r2);
+
+            userRepo.save(new User("jack", "bauer", "jack.bauer@gmail.com", "abcABC@123", t, r));
+
+            Domain domain1 = new Domain("Informatique");
+
+            Domain domain2 = new Domain("Réseaux et internet");
             domainRepo.save(domain1);
             domainRepo.save(domain2);*/
             
