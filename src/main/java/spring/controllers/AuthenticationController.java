@@ -27,6 +27,9 @@ import spring.core.service.UserService;
  */
 @Controller
 public class AuthenticationController {
+    
+    @Autowired
+    private ModelController modelController;
 
     @Autowired
     private UserService userService;
@@ -43,7 +46,7 @@ public class AuthenticationController {
     public String loginForm(Model model, HttpSession session) {
         if (session != null) {
             if (session.getAttribute("role") != null) {
-                return "demand/model/list";
+                return this.modelController.list(model);
             }
         }
         model.addAttribute("login", new Login());
@@ -71,7 +74,7 @@ public class AuthenticationController {
             session.setAttribute("firstname", user.getFirstname());
             session.setAttribute("lastname", user.getLastname());
             session.setAttribute("role", user.getRole().getName());
-            return "demand/model/list";
+            return this.modelController.list(model);
         }
     }
 
