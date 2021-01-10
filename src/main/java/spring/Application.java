@@ -52,12 +52,12 @@ public class Application extends SpringBootServletInitializer {
 
             Domain domain1 = new Domain("Informatique");
 
-            Domain domain2 = new Domain("Réseaux et internet");
+            Domain domain2 = new Domain("RÃ©seaux et internet");
             domainRepo.save(domain1);
             domainRepo.save(domain2);*/
             
             // fetch all userss
-            System.out.println("User found with findByPasswordAndEmail():");
+            /*System.out.println("User found with findByPasswordAndEmail():");
             System.out.println("-------------------------------");
 
             User user = userRepo.findByPasswordAndEmail("abcABC@123", "jack.bauer@gmail.com");
@@ -65,7 +65,7 @@ public class Application extends SpringBootServletInitializer {
                 System.out.println("Utilisateur introuvable");
             } else {
                 System.out.println(user.toString());
-            }
+            }*/
         };
     }
 

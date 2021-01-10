@@ -54,7 +54,7 @@ public class UserController {
     }
     
     @PostMapping("/create")
-    public String createValid(@Valid User user, BindingResult bindingResult) throws ParseException {
+    public String createValid(@Valid User user, BindingResult bindingResult, Model model) throws ParseException {
 
         //String mdp = "abcABC@11215";
         //user.setPassword("abcABC@11215");
@@ -65,6 +65,6 @@ public class UserController {
         service.save(user);
         //System.out.println(service.findByFirstname("Robin").toString());
         // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
-        return "user/list";
+        return this.userlist(model);
     }
 }
