@@ -5,6 +5,7 @@
  */
 package spring.controllers;
 
+import java.text.ParseException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,7 @@ public class MemberController {
     }
     
     @PostMapping("/create")
-    public String createValid(@Valid User member, BindingResult bindingResult) {
+    public String createValid(@Valid User member, BindingResult bindingResult) throws ParseException {
         
         member.setPassword("abcABC@11215");
         System.out.println("nb error = " + bindingResult.getAllErrors().size());
@@ -51,7 +52,7 @@ public class MemberController {
         
         service.save(member);
         System.out.println(service.findByFirstname("Robin").toString());
-        // TODO : si il ny a pas d'erreur, on génère un MDP et on crée le nouvel utilisateur puis on redirige avec un message de confirmation
+        // TODO : si il ny a pas d'erreur, on gÃ©nÃ¨re un MDP et on crÃ©e le nouvel utilisateur puis on redirige avec un message de confirmation
         return "home";
 
     }

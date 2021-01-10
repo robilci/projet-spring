@@ -5,55 +5,41 @@
  */
 package spring.core.service.impl;
 
-<<<<<<< HEAD
-=======
+
 import java.text.ParseException;
->>>>>>> ca810f9ea47dc8a3801025d933b787d364d926c1
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-import spring.core.entity.User;
-import spring.core.repository.UserRepository;
-import spring.core.service.UserService;
-=======
 import org.springframework.transaction.annotation.Transactional;
 import spring.core.entity.User;
 import spring.core.repository.UserRepository;
 import spring.core.service.EmailService;
 import spring.core.service.UserService;
 import spring.utils.Emailconfig;
->>>>>>> ca810f9ea47dc8a3801025d933b787d364d926c1
 
 /**
  *
  * @author robin
  */
-<<<<<<< HEAD
-@Service
-public class UserServiceImpl implements UserService {
-=======
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private EmailServiceImpl emailService;
->>>>>>> ca810f9ea47dc8a3801025d933b787d364d926c1
+
     
     @Autowired
     private UserRepository repo;
             
     @Override
-<<<<<<< HEAD
-    public User save(User entity) {
-=======
+
     public User save(User entity) throws ParseException {
         String mdp =  "abcABC@11215";
         entity.setPassword(mdp);
         emailService.EnvoieMotdePasse(entity,mdp);
->>>>>>> ca810f9ea47dc8a3801025d933b787d364d926c1
         return repo.save(entity);
     }
 
