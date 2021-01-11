@@ -60,7 +60,7 @@ and open the template in the editor.
                             <h5 th:text="${model.title}" class="card-title"></h5>
                             <h6 th:text="'Niveau d\'urgence : ' + ${model.priority}">test</h6> 
                             <p><small th:text="${model.location}" class="card-title"></small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
+                            <a th:href="'http://localhost:8080/model/delete/' + ${model.id}" class="btn btn-danger btn-primary">Supprimer</a>
                         </div>
                     </div>
                 </div>

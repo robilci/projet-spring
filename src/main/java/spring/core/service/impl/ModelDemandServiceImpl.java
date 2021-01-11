@@ -33,4 +33,10 @@ public class ModelDemandServiceImpl implements ModelDemandService {
         return repo.findAll();
     }
 
+    @Override
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
+
+
 }
