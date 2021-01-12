@@ -34,6 +34,14 @@ public class Application extends SpringBootServletInitializer {
     public CommandLineRunner demo(UserRepository userRepo, TeamRepository teamRepo, RoleRepository roleRepo, DomainRepository domainRepo) {
         return (args) -> {
 
+            if (roleRepo.findAll().isEmpty()){
+                Role r = new Role("ADMINISTRATEUR");
+                roleRepo.save(r);
+                r = new Role("COLLABORATUER");
+                roleRepo.save(r);
+                r = new Role("INTERVENANT");
+                roleRepo.save(r);
+            }
 
             // save a few user with team and role
             /*
@@ -50,15 +58,15 @@ public class Application extends SpringBootServletInitializer {
             roleRepo.save(r2);
 
             userRepo.save(new User("jack", "bauer", "jack.bauer@gmail.com", "abcABC@123", t, r));
-            */
-            /*
+
             Domain domain1 = new Domain("Informatique");
+
             Domain domain2 = new Domain("Réseaux et internet");
             domainRepo.save(domain1);
             domainRepo.save(domain2);*/
             
             // fetch all userss
-            System.out.println("User found with findByPasswordAndEmail():");
+            /*System.out.println("User found with findByPasswordAndEmail():");
             System.out.println("-------------------------------");
 
             User user = userRepo.findByPasswordAndEmail("abcABC@123", "jack.bauer@gmail.com");
@@ -66,7 +74,7 @@ public class Application extends SpringBootServletInitializer {
                 System.out.println("Utilisateur introuvable");
             } else {
                 System.out.println(user.toString());
-            }
+            }*/
         };
     }
 

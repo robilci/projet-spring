@@ -29,6 +29,9 @@ import spring.core.service.UserService;
 public class AuthenticationController {
 
     @Autowired
+    private ModelController modelController;
+
+    @Autowired
     private UserService userService;
     
     @Autowired
@@ -39,14 +42,27 @@ public class AuthenticationController {
         return "demand/model/create";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String loginForm(Model model, HttpSession session) {
         if (session != null) {
             if (session.getAttribute("role") != null) {
-                return "demand/model/list";
+                return this.modelController.list(model);
             }
         }
         model.addAttribute("login", new Login());
+
+        return "login";
+    }
+
+    @GetMapping("/login")
+    public String loginForm2(Model model, HttpSession session) {
+        if (session != null) {
+            if (session.getAttribute("role") != null) {
+                return this.modelController.list(model);
+            }
+        }
+        model.addAttribute("login", new Login());
+
         return "login";
     }
 
@@ -71,7 +87,8 @@ public class AuthenticationController {
             session.setAttribute("firstname", user.getFirstname());
             session.setAttribute("lastname", user.getLastname());
             session.setAttribute("role", user.getRole().getName());
-            return "demand/model/list";
+
+            return this.modelController.list(model);
         }
     }
 

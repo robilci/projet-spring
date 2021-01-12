@@ -5,6 +5,7 @@
  */
 package spring.core.service.impl;
 
+
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
@@ -16,25 +17,43 @@ import spring.core.repository.UserRepository;
 import spring.core.service.EmailService;
 import spring.core.service.UserService;
 import spring.utils.Emailconfig;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
  * @author robin
  */
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private EmailServiceImpl emailService;
+
     
     @Autowired
     private UserRepository repo;
+
+    public String generate(int length)
+    {
+        String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; // Tu supprimes les lettres dont tu ne veux pas
+        String pass = "";
+        for(int x=0;x<length;x++)
+        {
+            int i = (int)Math.floor(Math.random() * 62); // Si tu supprimes des lettres tu diminues ce nb
+            pass += chars.charAt(i);
+        }
+        System.out.println(pass);
+        return pass;
+    }
             
     @Override
     public User save(User entity) throws ParseException {
-        String mdp =  "abcABC@11215";
-        entity.setPassword(mdp);
+        String mdp =  generate(6);
+        //j'ai enlevé la contrainte sur les users
+        String mdpcript = new BCryptPasswordEncoder().encode(mdp);
+        entity.setPassword(mdpcript);
         emailService.EnvoieMotdePasse(entity,mdp);
         return repo.save(entity);
     }

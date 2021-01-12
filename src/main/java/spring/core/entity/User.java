@@ -44,7 +44,7 @@ public class User implements Serializable {
     @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", flags = Pattern.Flag.CASE_INSENSITIVE, message = "Email invalide")
     private String email;
 
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit compoter au moins une minuscule, une majuscule, un chiffre, un caractère spécial et doit avoir une longueur de 8 minimum")
+    //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Le mot de passe doit compoter au moins une minuscule, une majuscule, un chiffre, un caractère spécial et doit avoir une longueur de 8 minimum")
     private String password;
     
     @ManyToOne
