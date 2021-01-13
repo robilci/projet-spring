@@ -50,9 +50,9 @@ public class MySimpleUrlAuthenticationSuccessHandler extends SimpleUrlAuthentica
         if (isAdministrateur(roles)) {
             url = "/user/list";
         } else if (isIntervenant(roles)) {
-            url = "/demande/list";
+            url = "/demand/list";
         } else if (isCollaborateur(roles)) {
-            url = "/repondredemande/list";
+            url = "/demand/list";
         }       else {
             url = "/accessDenied";
         }

@@ -31,7 +31,7 @@ and open the template in the editor.
                     <p th:text="${model.location}"></p><br>
                 </div>
 
-                <form action="http://localhost:8080/demand/create" method="post" th:object="${demand}" class="col-md-12">
+                <form th:action="@{/demand/create}" method="post" th:object="${demand}" class="col-md-12">
                     <label class="h6">Niveau de criticité : </label>
                     <div class="form-check form-check-inline ml-2">
                         <input th:field="*{criticality}"  class="form-check-input" type="radio" name="criticality" id="inlineRadio1" value="1" checked>

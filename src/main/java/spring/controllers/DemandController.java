@@ -72,7 +72,7 @@ public class DemandController {
             demand.setStatus(1);
             System.out.println("AUTOWIRED : " + demandService.toString());
             demandService.save(demand);
-            return this.list(model);
+            return this.myList(model);
         }
         
         return this.createForm(chosenModel.getId() + "", model);

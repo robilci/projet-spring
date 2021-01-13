@@ -60,12 +60,12 @@ public class SecuritConfig extends WebSecurityConfigurerAdapter	 {
 				.loginPage("/login").successHandler(customSuccessHandler)
 				.and().logout();
 
-		http.authorizeRequests().antMatchers("/demande/*")
-				.hasRole("INTERVENANT").and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/demand/*")
+				.hasRole("COLLABORATEUR").and().formLogin().loginPage("/login")
 				.successHandler(customSuccessHandler).and().logout();
 
-		http.authorizeRequests().antMatchers("/repondredemande/*")
-				.hasRole("COLLABORATEUR").and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/demand/response")
+				.hasRole("INTERVENANT").and().formLogin().loginPage("/login")
 				.successHandler(customSuccessHandler).and().logout();
 
 
