@@ -6,16 +6,16 @@
 package spring.core.service;
 
 import java.util.List;
-import spring.core.entity.ModelDemand;
+import spring.core.entity.Demand;
 
 /**
  *
  * @author robin
  */
-public interface ModelDemandService {
+public interface DemandService {
     
-    public ModelDemand save(ModelDemand entity);
-    public List<ModelDemand> findAll();
-    public void delete(Long id);
-    public ModelDemand getOne(Long id);
+    List<Demand> findAll();
+    Demand save(Demand demand);
+    Demand getOne(Long id);
+    
 }

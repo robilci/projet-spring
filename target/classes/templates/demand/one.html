@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ma demande</title>
+        <link th:href="@{../../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{../../jquery/jquery.min.js}"></script>  
+        <script th:src="@{../../popper/popper.min.js}"></script>  
+        <script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>  
+    </head>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a href="http://localhost:8080/demand/mylist"><button type="button" class="btn btn-primary">Retour</button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 th:text="${demand.title}" class="text-center m-3"></h4>
+        <br>
+        <div class="container">
+            <div class="row form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea th:text="${demand.description}" disabled="true" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="row">
+                <p th:if="${demand.status == 1}">Statut de la demande : <span class="badge badge-secondary">non ouverte</span></p>
+                <p th:if="${demand.status == 2}">Statut de la demande : <span class="badge badge-primary">ouverte</span></p>
+                <p th:if="${demand.status == 3}">Statut de la demande : <span class="badge badge-success">traitée</span></p>
+                <p th:if="${demand.status == 4}">Statut de la demande : <span class="badge badge-danger">refusée</span></p>
+            </div>
+            <div class="row">
+                <p>Date et heure de création de la demande : <span class="ml-1" th:text="${date}"></span></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html style="background-color: white">
+    <head>
+        <title>Choix du modèle</title>
+        <link th:href="@{../../../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{../../../jquery/jquery.min.js}"></script>  
+        <script th:src="@{../../../popper/popper.min.js}"></script>  
+        <script th:src="@{../../../bootstrap/js/bootstrap.min.js}"></script>  
+    </head>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost:8080/demand/mylist">Liste de mes demandes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/demand/list">Créer une demande</a>
+                    </li>
+                    <li class="offset-8 nav-item float-right">
+                        <a class="nav-link" href="http://localhost:8080/logout">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <h4 class="text-center m-3">Liste de mes demandes</h4><br>
+        <div class="container">
+            <div class="row">
+                <div th:each="demand : ${demands}" class="col-sm-4">
+                    <div th:class="${demand.type == 1} ? 'card border border-primary rounded m-1' : 'card border border-warning rounded m-1'">
+                        <h5 th:text="${demand.type == 1} ? 'service' : 'incident'" class="card-header"></h5>
+                        <img th:src="${demand.type == 1} ? '../../../images/service.png' : '../../../images/incident.png'" class="mx-auto d-block m-1" height="100" width="100" alt="incident">
+                        <div class="card-body">
+                            <h5 th:text="${demand.title}" class="card-title"></h5>
+                            <p><small th:text="${demand.location}" class="card-title"></small></p>
+                            <p th:if="${demand.status == 1}">Statut de la demande : <span class="badge badge-secondary">non ouverte</span></p>
+                            <p th:if="${demand.status == 2}">Statut de la demande : <span class="badge badge-primary">ouverte</span></p>
+                            <p th:if="${demand.status == 3}">Statut de la demande : <span class="badge badge-success">traitée</span></p>
+                            <p th:if="${demand.status == 4}">Statut de la demande : <span class="badge badge-danger">refusée</span></p>
+                            <a th:href="'http://localhost:8080/demand/' + ${demand.id}" class="btn btn-primary">Parcourir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <body>
+</html>

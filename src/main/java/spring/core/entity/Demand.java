@@ -14,51 +14,60 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author robin
  */
-
 @Entity
 @Table(uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"code"})})
+    @UniqueConstraint(columnNames = {"id"})})
 public class Demand implements Serializable {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String code;
-    
-    @NotNull
-    private Date creationDate;
-    
-    @NotNull
-    private Date treatmentDate;
-    
-    @NotNull
-    private String Description;
-    
-    @NotNull
-    private int criticality;
-    
-    @NotNull
-    private String title;
-    
-    @NotNull
-    private int priority;
-    
-    @NotNull
-    private int type;
-    
-    @NotNull
-    private String localisation;
 
-    public String getCode() {
-        return code;
+    public Demand() {
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private Date creationDate;
+
+    private Date treatmentDate;
+    
+    private int status;
+
+    @NotNull
+    @Size(min = 20, max = 1600)
+    private String Description;
+
+    @NotNull
+    private int criticality;
+
+    private String title;
+
+    private int priority;
+
+    private int type;
+
+    private String location;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Date getCreationDate() {
@@ -92,7 +101,42 @@ public class Demand implements Serializable {
     public void setCriticality(int criticality) {
         this.criticality = criticality;
     }
-    
-    
-    
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Id : " + id + " - " + title;
+    }
+
 }
