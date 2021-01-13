@@ -42,7 +42,7 @@ public class AuthenticationController {
         return "demand/model/create";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String loginForm(Model model, HttpSession session) {
         if (session != null) {
             if (session.getAttribute("role") != null) {
@@ -50,6 +50,19 @@ public class AuthenticationController {
             }
         }
         model.addAttribute("login", new Login());
+
+        return "login";
+    }
+
+    @GetMapping("/login")
+    public String loginForm2(Model model, HttpSession session) {
+        if (session != null) {
+            if (session.getAttribute("role") != null) {
+                return this.modelController.list(model);
+            }
+        }
+        model.addAttribute("login", new Login());
+
         return "login";
     }
 

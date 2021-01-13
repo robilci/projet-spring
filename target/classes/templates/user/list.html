@@ -4,8 +4,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns:th="http://www.thymeleaf.org">
-    <html style="background-color: white">
+
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:th="http://www.thymeleaf.org" style="background-color: white">
         <head>
             <title>TODO supply a title</title>
             <meta charset="UTF-8">
@@ -19,22 +19,31 @@ and open the template in the editor.
             <div class="card text-center">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link " href="#">Modèle</a>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')" >
+                            <a class="nav-link " href="http://localhost:8080/model/list">Modèles</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="home">Domaine</a>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')" >
+                            <a class="nav-link" href="#">Domaines</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Utilisateur</a>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                            <a class="nav-link active" href="http://localhost:8080/user/create">Utilisateur</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Groupe</a>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                            <a class="nav-link" href="#">Groupes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Rôle</a>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                            <a class="nav-link" href="#">Rôles</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_INTERVENANT')"  >
+                            <a class="nav-link" href="http://localhost:8080/demand/list">Faire une demande</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_COLLABORATEUR')" >
+                            <a class="nav-link" href="#">Répondre à une demande</a>
                         </li>
                     </ul>
+                    <div class="text-right">
+                        <a href="/logout" class="btn btn-lg btn-primary">logout</a>
+                    </div>
                 </div>
             </div>
             <br>

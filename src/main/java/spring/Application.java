@@ -34,6 +34,15 @@ public class Application extends SpringBootServletInitializer {
     public CommandLineRunner demo(UserRepository userRepo, TeamRepository teamRepo, RoleRepository roleRepo, DomainRepository domainRepo) {
         return (args) -> {
 
+            if (roleRepo.findAll().isEmpty()){
+                Role r = new Role("ADMINISTRATEUR");
+                roleRepo.save(r);
+                r = new Role("COLLABORATUER");
+                roleRepo.save(r);
+                r = new Role("INTERVENANT");
+                roleRepo.save(r);
+            }
+
             // save a few user with team and role
             /*
             Team t = new Team("informaticien");
