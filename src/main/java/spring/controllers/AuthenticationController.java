@@ -82,7 +82,7 @@ public class AuthenticationController {
             session.setAttribute("firstname", user.getFirstname());
             session.setAttribute("lastname", user.getLastname());
             session.setAttribute("role", user.getRole().getName());
-
+            session.setAttribute("id", user.getId());
             return this.modelController.list(model);
         }
     }
