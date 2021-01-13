@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
     }
             
     @Override
+
     public User save(User entity) throws ParseException {
         String mdp =  generate(6);
         //j'ai enlevé la contrainte sur les users

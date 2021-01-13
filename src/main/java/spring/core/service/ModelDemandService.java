@@ -16,4 +16,6 @@ public interface ModelDemandService {
     
     public ModelDemand save(ModelDemand entity);
     public List<ModelDemand> findAll();
+    public void delete(Long id);
+    public ModelDemand getOne(Long id);
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Nouvelle demande</title>
+        <link th:href="@{../../../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{../../../jquery/jquery.min.js}"></script>  
+        <script th:src="@{../../../popper/popper.min.js}"></script>  
+        <script th:src="@{../../../bootstrap/js/bootstrap.min.js}"></script>  
+    </head>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a href="http://localhost:8080/demand/list"><button type="button" class="btn btn-primary">Retour</button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 th:text="${model.type == 1} ? 'Nouvelle demande de service' : 'Nouvelle demande d\'incident'" class="text-center m-3"></h3><br>
+        <div class="container">
+            <div class="row">
+                <div class="text-center col-12">
+                    <h4 th:text="${model.title}"></h4>
+                    <p th:text="${model.location}"></p><br>
+                </div>
+
+                <form th:action="@{/demand/create}" method="post" th:object="${demand}" class="col-md-12">
+                    <label class="h6">Niveau de criticité : </label>
+                    <div class="form-check form-check-inline ml-2">
+                        <input th:field="*{criticality}"  class="form-check-input" type="radio" name="criticality" id="inlineRadio1" value="1" checked>
+                        <label class="form-check-label" for="inlineRadio1">Faible</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input th:field="*{criticality}" class="form-check-input" type="radio" name="criticality" id="inlineRadio2" value="2">
+                        <label class="form-check-label" for="inlineRadio2">Moyen</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input th:field="*{criticality}" class="form-check-input" type="radio" name="criticality" id="inlineRadio3" value="3">
+                        <label class="form-check-label" for="inlineRadio3">élevé</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description : </label>
+                        <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("inlineRadio1").setAttribute("checked", "checked")
+        </script>
+
+    </body>
+</html>

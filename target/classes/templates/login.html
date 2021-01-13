@@ -2,28 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
 
-    <link href="css/login.css" rel="stylesheet"/>
-    <link th:href="@{./bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-    <script th:src="@{./jquery/jquery.min.js}"></script>  
-    <script th:src="@{./popper/popper.min.js}"></script>  
-    <script th:src="@{./bootstrap/js/bootstrap.min.js}"></script>  
-</head>
+        <link href="css/login.css" rel="stylesheet"/>
+        <link th:href="@{./bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{./jquery/jquery.min.js}"></script>  
+        <script th:src="@{./popper/popper.min.js}"></script>  
+        <script th:src="@{./bootstrap/js/bootstrap.min.js}"></script>  
+    </head>
 
-<body>
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <div class="fadeIn first">
-                <img src="images/logo.png" id="icon"/>
+    <body>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="images/logo.png" id="icon"/>
+                </div>
+
+                <form th:action="@{/login}" method="post">
+                    <input  type="text" id="login" class="fadeIn second" name="username" placeholder="email">
+                    <input  type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+                <div th:if="${param.error}" class="alert alert-danger">
+                    Login ou mot de passe incorrect
+                </div>
             </div>
-
-            <form  th:action="@{/login}"  method="post">
-                <input  type="text" id="login" class="fadeIn second" name="username" placeholder="email">
-                <input  type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
-
-
         </div>
-    </div>
-</body>
+    </body>
 </html>

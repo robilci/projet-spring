@@ -44,28 +44,17 @@ public class SecuritConfig extends WebSecurityConfigurerAdapter	 {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		/*
-		http.formLogin().loginPage("/login") ;
-		http.authorizeRequests().antMatchers("/proprietaire").hasRole("proprietaire");
-		http.authorizeRequests().antMatchers("/locataire").hasRole("locataire");
-		http.authorizeRequests().antMatchers("/administrateur").hasRole("admin");
-		http.authorizeRequests().antMatchers("/gestionnaire").hasRole("gestionnaire");
-		http.exceptionHandling().accessDeniedPage("/403");*/
-
-		//http.formLogin().loginPage("/login") ;
-
-
 		http.authorizeRequests().antMatchers("/user/*",
-				"/model/*").hasRole("ADMINISTRATEUR").and().formLogin()
+				"/model/*","/team/*","/domain/*").hasRole("ADMINISTRATEUR").and().formLogin()
 				.loginPage("/login").successHandler(customSuccessHandler)
 				.and().logout();
 
-		http.authorizeRequests().antMatchers("/demande/*")
-				.hasRole("INTERVENANT").and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/demand/*")
+				.hasRole("COLLABORATEUR").and().formLogin().loginPage("/login")
 				.successHandler(customSuccessHandler).and().logout();
 
-		http.authorizeRequests().antMatchers("/repondredemande/*")
-				.hasRole("COLLABORATEUR").and().formLogin().loginPage("/login")
+		http.authorizeRequests().antMatchers("/demand/response")
+				.hasRole("INTERVENANT").and().formLogin().loginPage("/login")
 				.successHandler(customSuccessHandler).and().logout();
 
 

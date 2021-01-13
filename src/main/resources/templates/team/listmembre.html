@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:th="http://www.thymeleaf.org" style="background-color: white">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{../../../bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{../../../jquery/jquery.min.js}"></script>
+        <script th:src="@{../../../popper/popper.min.js}"></script>
+        <script th:src="@{../../../bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')" >
+                        <a class="nav-link " href="http://localhost:8080/model/list">Modèles</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')" >
+                        <a class="nav-link" href="#">Domaines</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                        <a class="nav-link active" href="http://localhost:8080/user/create">Utilisateur</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                        <a class="nav-link" href="#">Groupes</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_ADMINISTRATEUR')"  >
+                        <a class="nav-link" href="#">Rôles</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_INTERVENANT')"  >
+                        <a class="nav-link" href="http://localhost:8080/demand/list">Faire une demande</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_COLLABORATEUR')" >
+                        <a class="nav-link" href="#">Répondre à une demande</a>
+                    </li>
+                    <li class="offset-7 nav-item float-right">
+                        <a class="nav-link" href="http://localhost:8080/logout">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <a href="create" class="btn btn-lg btn-primary">Ajouter un Utilisateur +</a>
+        </div><br>
+        <h4 class="text-center m-3">Liste des utilisateurs</h4>
+        <div class="container">
+            <div class="row">
+
+                <div th:each="u : ${users}" class="col-sm-4">
+                    <div class=" card border border-secondary rounded m-1">
+                        <h5 th:text="${u.getFirstname()}+' '+${u.getLastname()}" class="card-header"></h5>
+                        <div class="card-body">
+                            <h5 th:text="'Role : '+ ${u.getRole().getName()}" class="card-title"></h5>
+                            <h6 th:text="${u.getTeam()}" >   </h6>
+
+                            <a href="#" class="btn btn-primary">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

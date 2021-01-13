@@ -25,13 +25,16 @@ and open the template in the editor.
                         <a class="nav-link" href="home">Domaine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Utilisateur</a>
+                        <a class="nav-link" href="http://localhost:8080/user/list">Utilisateur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Groupe</a>
+                        <a class="nav-link" href="/team/list">Groupe</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Rôle</a>
+                    </li>
+                    <li class="offset-7 nav-item float-right">
+                        <a class="nav-link" href="http://localhost:8080/logout">Déconnexion</a>
                     </li>
                 </ul>
             </div>
@@ -60,7 +63,7 @@ and open the template in the editor.
                             <h5 th:text="${model.title}" class="card-title"></h5>
                             <h6 th:text="'Niveau d\'urgence : ' + ${model.priority}">test</h6> 
                             <p><small th:text="${model.location}" class="card-title"></small></p>                     
-                            <a href="#" class="btn btn-primary">Modifier</a>
+                            <a th:href="'http://localhost:8080/model/delete/' + ${model.id}" class="btn btn-danger btn-primary">Supprimer</a>
                         </div>
                     </div>
                 </div>

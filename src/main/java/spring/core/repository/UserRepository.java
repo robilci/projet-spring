@@ -6,6 +6,7 @@
 package spring.core.repository;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import spring.core.entity.Team;
 import spring.core.entity.User;
 
 
@@ -18,5 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByFirstname(String firstname);
     User findById(long id);
     User findByPasswordAndEmail(String password, String email);
+    List<User>  findByTeam(Team team);
     
 }
